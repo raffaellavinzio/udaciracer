@@ -2,6 +2,23 @@
 
 /* -------------------  MOBILE  --------------------- */
 
+a {
+    display: block;
+    text-decoration: none;
+    font-size: 20px;
+    text-align: center;
+    padding: 20px;
+    color: white;
+    background-color: green;
+    width: 100%;
+}
+
+#results {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 
 /* -------------------  TABLET  --------------------- */
 @media (min-width: 768px) {

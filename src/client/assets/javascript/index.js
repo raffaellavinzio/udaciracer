@@ -201,6 +201,23 @@ function handleAccelerate() {
 }
 
 // HTML VIEWS ------------------------------------------------
+
+const customRacers = {
+  "Racer 1": "Blue",
+  "Racer 2": "Storm",
+  "Racer 3": "Moon",
+  "Racer 4": "Sky",
+  "Racer 5": "Misty",
+};
+const customTracks = {
+  "Track 1": "Carrot Avenue",
+  "Track 2": "Banana Highway",
+  "Track 3": "Fennel Street",
+  "Track 4": "Celery Road",
+  "Track 5": "Chicory Boulevard",
+  "Track 6": "Endive Way",
+};
+
 // Provided code - do not remove
 
 function renderRacerCars(racers) {
@@ -224,7 +241,7 @@ function renderRacerCard(racer) {
 
   return `
 		<li class="card podracer" id="${id}">
-			<h3>${driver_name}</h3>
+			<h3>${customRacers[driver_name]}</h3>
 			<p>${top_speed}</p>
 			<p>${acceleration}</p>
 			<p>${handling}</p>
@@ -253,7 +270,7 @@ function renderTrackCard(track) {
 
   return `
 		<li id="${id}" class="card track">
-			<h3>${name}</h3>
+			<h3>${customTracks[name]}</h3>
 		</li>
 	`;
 }
@@ -268,7 +285,7 @@ function renderCountdown(count) {
 function renderRaceStartView(track, racers) {
   return `
   		<header>
-  			<h1>Race: ${track.name}</h1>
+  			<h1>Race: ${customTracks[track.name]}</h1>
 		</header>
 		<main id="two-columns">
 			<section id="leaderBoard">
@@ -292,7 +309,7 @@ function resultsView(positions) {
 		<header>
 			<h1>Race Results</h1>
 		</header>
-		<main>
+		<main id="results">
 			${raceProgress(positions)}
 			<a href="/race">Start a new race</a>
 		</main>
@@ -307,10 +324,14 @@ function raceProgress(positions) {
   let count = 1;
 
   const results = positions.map(p => {
+    let racerName = p.driver_name.includes("you")
+      ? `${customRacers[p.driver_name.slice(0, -6)]} (you)`
+      : customRacers[p.driver_name];
+
     return `
 			<tr>
 				<td>
-					<h3>${count++} - ${p.driver_name}</h3>
+					<h3>${count++} - ${racerName}</h3>
 				</td>
 			</tr>
 		`;
@@ -320,7 +341,7 @@ function raceProgress(positions) {
 		<main>
 			<h3>Leaderboard</h3>
 			<section id="leaderBoard">
-				${results}
+				${results.join("")}
 			</section>
 		</main>
 	`;

@@ -2,7 +2,7 @@
 
 /* -------------------  MOBILE  --------------------- */
 header {
-  background-image: url('https://via.placeholder.com/1150');
+    background-image: url('../images/rabbit_race.jpg');
 }
 
 main#two-columns {
@@ -27,6 +27,25 @@ section#accelerate button {
 #big-numbers {
     font-weight: bolder;
     font-size: 70px;
+}
+
+#accelerate {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#gas-peddle {
+    color: white;
+    font-size: 30px;
+}
+
+#leaderBoard {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
 }
 
 /* -------------------  TABLET  --------------------- */
